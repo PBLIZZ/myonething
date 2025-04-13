@@ -26,6 +26,6 @@
         "@/*": ["./src/*"]
       }
     },
-    "include": ["src"], // Specify that files in the 'src' directory are part of the project
+    "include": ["src", "vite.config.js"],
     "references": [{ "path": "./tsconfig.node.json" }] // Reference Vite's node config (often present)
   }

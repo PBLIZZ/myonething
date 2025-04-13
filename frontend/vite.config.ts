@@ -1,17 +1,16 @@
-import path from "path"
-import react from '@vitejs/plugin-react'
 import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+import path from 'path'
 import tailwindcss from 'tailwindcss'
 import autoprefixer from 'autoprefixer'
 
-// https://vitejs.dev/config/
-// https://vitejs.dev/guide/features.html#alias
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
+    extensions: ['.js', '.jsx', '.ts', '.tsx'],
   },
   css: {
     postcss: {
@@ -21,4 +20,4 @@ export default defineConfig({
       ],
     },
   },
-})
+}) 

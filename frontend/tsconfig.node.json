@@ -5,7 +5,8 @@
       "module": "ESNext", // Use modern ES modules
       "moduleResolution": "bundler", // Modern module resolution
       "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
-      "strict": true // Enable strict type checking
+      "strict": true, // Enable strict type checking
+      "types": ["node"]
     },
-    "include": ["vite.config.js"] // Specify which Node.js files this config applies to
+    "include": ["vite.config.ts"] // Specify which Node.js files this config applies to
   }

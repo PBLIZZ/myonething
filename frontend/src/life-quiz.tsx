@@ -21,6 +21,7 @@ export default function LifeQuiz() {
 
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
   // Categories with their labels, descriptions and icons
   const categories = [
@@ -91,15 +92,31 @@ export default function LifeQuiz() {
   }
 
   // Handle form submission
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     setIsSubmitting(true)
-    // Simulate API call
-    setTimeout(() => {
-      console.log("Submitted values:", values)
-      setIsSubmitting(false)
+    setError(null)
+    try {
+      const response = await fetch('http://localhost:3500/api/submit-scores', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+
+      if (!response.ok) {
+        throw new Error('Failed to submit scores')
+      }
+
+      const data = await response.json()
+      console.log('Backend response:', data)
       setSubmitted(true)
-      // Here you would typically send the data to your backend
-    }, 1500)
+    } catch (error) {
+      console.error('Error submitting scores:', error)
+      setError('Failed to submit scores. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   // Get average score
@@ -189,6 +206,11 @@ export default function LifeQuiz() {
       </CardContent>
       {!submitted && (
         <CardFooter className="px-6 pb-6 pt-2">
+          {error && (
+            <div className="mb-4 p-4 bg-red-50 text-red-600 rounded-lg">
+              {error}
+            </div>
+          )}
           <Button
             onClick={handleSubmit}
             className="w-full bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 text-white py-6 text-lg"
