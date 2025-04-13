@@ -1,0 +1,31 @@
+{
+    "compilerOptions": {
+      "target": "ESNext", // Use modern JavaScript features
+      "useDefineForClassFields": true, // Standard for modern JS classes
+      "lib": ["ESNext", "DOM", "DOM.Iterable"], // Include standard browser and ESNext libraries
+      "module": "ESNext", // Use modern ES modules
+      "skipLibCheck": true, // Skip type checking of declaration files (node_modules)
+  
+      /* Bundler mode */
+      "moduleResolution": "bundler", // How modules are resolved (recommended for Vite)
+      "allowImportingTsExtensions": true, // Allow importing .ts files (needed if mixing)
+      "resolveJsonModule": true, // Allow importing JSON files
+      "isolatedModules": true, // Ensure files can be compiled separately
+      "noEmit": true, // Do not output compiled JS files (Vite handles this)
+      "jsx": "react-jsx", // Use the modern React JSX transform
+  
+      /* Linting */
+      "strict": true, // Enable stricter type checking (good practice)
+      "noUnusedLocals": true, // Report unused local variables
+      "noUnusedParameters": true, // Report unused function parameters
+      "noFallthroughCasesInSwitch": true, // Report fallthrough errors in switch statements
+  
+      /* Path Aliases */
+      "baseUrl": ".", // Base directory for resolving non-absolute paths
+      "paths": { // Define the alias
+        "@/*": ["./src/*"]
+      }
+    },
+    "include": ["src"], // Specify that files in the 'src' directory are part of the project
+    "references": [{ "path": "./tsconfig.node.json" }] // Reference Vite's node config (often present)
+  }

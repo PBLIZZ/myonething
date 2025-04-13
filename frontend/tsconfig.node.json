@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "composite": true, // Required when using project references
+      "skipLibCheck": true, // Skip type checking of declaration files
+      "module": "ESNext", // Use modern ES modules
+      "moduleResolution": "bundler", // Modern module resolution
+      "allowSyntheticDefaultImports": true, // Allow default imports from modules with no default export
+      "strict": true // Enable strict type checking
+    },
+    "include": ["vite.config.js"] // Specify which Node.js files this config applies to
+  }
